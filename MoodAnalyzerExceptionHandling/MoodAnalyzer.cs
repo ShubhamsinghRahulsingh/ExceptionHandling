@@ -1,4 +1,6 @@
-﻿namespace MoodAnalyzerExceptionHandling
+﻿using static MoodAnalyzerExceptionHandling.MoodAnalyzerCustomException;
+
+namespace MoodAnalyzerExceptionHandling
 {
     public class MoodAnalyzer
     {
@@ -11,6 +13,10 @@
         {
             try
             {
+                if (message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyzerCustomException(ExceptionType.EMPTY_MOOD, "Message should not be Empty");
+                }
                 if (message.Contains("Sad"))
                 {
                     return "Sad";
@@ -20,9 +26,9 @@
                     return "Happy";
                 }
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
-                return "Happy";
+                throw new MoodAnalyzerCustomException(ExceptionType.NULL_MOOD, "Message should not be null");
             }
         }
     }
