@@ -30,5 +30,17 @@ namespace MoodAnalyzerExceptionHandlingTest
             //Assert
             Assert.AreEqual(expected, mood);
         }
+        //TC2.1
+        [Test]
+        public void GivenNullMood_WhenAnalyzed_ShouldReturnHappy()
+        {
+            //Arrange
+            string message = null;
+            string expected = "Happy";
+            MoodAnalyzer analyse = new MoodAnalyzer(null);
+            //Act
+            string mood = analyse.AnalyzeMood();
+            Assert.AreEqual(expected, mood);
+        }
     }
 }

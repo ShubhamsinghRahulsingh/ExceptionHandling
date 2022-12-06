@@ -9,11 +9,18 @@
         }
         public string AnalyzeMood()
         {
-            if (message.Contains("Sad"))
+            try
             {
-                return "Sad";
+                if (message.Contains("Sad"))
+                {
+                    return "Sad";
+                }
+                else
+                {
+                    return "Happy";
+                }
             }
-            else
+            catch(NullReferenceException)
             {
                 return "Happy";
             }
